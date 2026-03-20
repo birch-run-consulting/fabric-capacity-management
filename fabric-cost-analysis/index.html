@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fabric Cost Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero__content">
+          <div class="hero__intro">
+            <p class="hero__kicker">Birch Run Consulting</p>
+            <h1>Fabric Cost Analysis</h1>
+          </div>
+          <div class="hero__card">
+            <div class="hero__metric-label">Recommended SKU</div>
+            <div class="hero__metric" id="hero-sku">F 16</div>
+            <div class="hero__submetric-wrap">
+              <div class="hero__submetric" id="hero-throughput">
+                480 CUs per 30 seconds
+              </div>
+              <button
+                class="tooltip-anchor"
+                id="hero-throughput-tooltip"
+                type="button"
+                aria-label="Show throughput calculation"
+              >
+                How this is calculated
+              </button>
+              <div class="tooltip-panel" id="hero-tooltip-panel" role="tooltip">
+                F16 provides 16 Capacity Units. Microsoft evaluates usage in
+                30-second windows, so 16 x 30 = 480 CUs per 30 seconds.
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel panel--controls">
+          <div class="panel__header">
+            <h2>Inputs</h2>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>Required CUs per 30 seconds</span>
+              <input id="required-cus" type="number" min="1" step="1" value="452" />
+              <small class="field__help">
+                Enter the Microsoft Fabric workload you expect to consume in a
+                30-second window.
+              </small>
+            </label>
+
+            <label class="field">
+              <span>Hours in a month</span>
+              <input id="hours-per-month" type="number" min="1" step="1" value="730" />
+              <small class="field__help">
+                Use the number of billable hours you want to model for a typical
+                month.
+              </small>
+            </label>
+
+            <label class="field">
+              <span>Power BI Pro seats</span>
+              <input id="pro-seats" type="number" min="0" step="1" value="0" />
+              <small class="field__help">
+                Add the number of users who would still need Power BI Pro
+                licensing.
+              </small>
+            </label>
+
+            <label class="field">
+              <span>Power BI PPU seats</span>
+              <input id="ppu-seats" type="number" min="0" step="1" value="500" />
+              <small class="field__help">
+                Add the number of users currently assigned Power BI Premium Per
+                User licenses.
+              </small>
+            </label>
+
+            <label class="field">
+              <span>Data Factory monthly cost</span>
+              <input
+                id="data-factory-cost"
+                type="number"
+                min="0"
+                step="1"
+                value="400"
+              />
+              <small class="field__help">
+                Enter your current monthly spend for Azure Data Factory or a
+                comparable integration workload.
+              </small>
+            </label>
+
+            <label class="field">
+              <span>SQL Database monthly cost</span>
+              <input id="sql-cost" type="number" min="0" step="1" value="250" />
+              <small class="field__help">
+                Enter your monthly Azure SQL Database cost tied to this Fabric
+                scenario.
+              </small>
+            </label>
+          </div>
+
+          <div class="summary-grid">
+            <article class="stat-card">
+              <div class="stat-card__label">Selected SKU</div>
+              <div class="stat-card__value" id="selected-sku">F 16</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-card__label">Reserved Cost / Month</div>
+              <div class="stat-card__value" id="reserved-cost">$1,389.33</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-card__label">Pay-as-you-go / Month</div>
+              <div class="stat-card__value" id="paygo-cost">$2,336.00</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-card__label">Savings vs PAYG</div>
+              <div class="stat-card__value" id="monthly-savings">$946.67</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel__header">
+            <h2>Power BI Licensing View</h2>
+          </div>
+          <div class="comparison-grid" id="comparison-cards"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel__header">
+            <h2>Scenario Matrix</h2>
+          </div>
+
+          <div class="table-wrap">
+            <table id="scenario-table">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel__header">
+            <h2>Fabric Pricing Data</h2>
+          </div>
+          <div class="table-wrap">
+            <table id="pricing-table">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

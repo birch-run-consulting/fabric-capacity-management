@@ -8,9 +8,10 @@ It will grow over time to include automation patterns, operational runbooks, and
 
 This repo now includes a public-facing migration guide for moving Power BI workspaces from Premium capacity to Microsoft Fabric, including prerequisites, scripts, and common migration gotchas:
 
-- [`docs/power-bi-premium-to-fabric-capacity-migration.md`](docs/power-bi-premium-to-fabric-capacity-migration.md)
-- [`docs/power-bi-premium-to-fabric-sources.md`](docs/power-bi-premium-to-fabric-sources.md)
-- [`scripts/power-bi-premium-to-fabric-capacity-migration/`](scripts/power-bi-premium-to-fabric-capacity-migration/)
+- [`power-bi-premium-to-fabric-migration/`](power-bi-premium-to-fabric-migration/)
+- [`power-bi-premium-to-fabric-migration/README.md`](power-bi-premium-to-fabric-migration/README.md)
+- [`power-bi-premium-to-fabric-migration/sources.md`](power-bi-premium-to-fabric-migration/sources.md)
+- [`power-bi-premium-to-fabric-migration/scripts/`](power-bi-premium-to-fabric-migration/scripts/)
 
 ## Live Tool
 

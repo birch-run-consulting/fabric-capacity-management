@@ -4,9 +4,9 @@ This guide describes a practical, low-risk approach for migrating Power BI works
 
 Related scripts:
 
-- [`Fabric-Capacity-Migration.ps1`](../scripts/power-bi-premium-to-fabric-capacity-migration/Fabric-Capacity-Migration.ps1)
-- [`Rollback-Script.ps1`](../scripts/power-bi-premium-to-fabric-capacity-migration/Rollback-Script.ps1)
-- [`Sources`](./power-bi-premium-to-fabric-sources.md)
+- [`Fabric-Capacity-Migration.ps1`](./scripts/Fabric-Capacity-Migration.ps1)
+- [`Rollback-Script.ps1`](./scripts/Rollback-Script.ps1)
+- [`Sources`](./sources.md)
 
 ## Executive Summary
 
@@ -206,7 +206,7 @@ Rollback planning should also assume that canceled refreshes, jobs, or pipelines
 Use the migration script to move workspaces from the source Premium capacity to the target Fabric capacity. The script exports a before-state CSV, prompts for confirmation, performs the reassignment, and then exports an after-state CSV for validation.
 
 ```powershell
-.\scripts\power-bi-premium-to-fabric-capacity-migration\Fabric-Capacity-Migration.ps1 `
+.\power-bi-premium-to-fabric-migration\scripts\Fabric-Capacity-Migration.ps1 `
     -SourceCapacityId "PREMIUM_CAPACITY_ID" `
     -TargetCapacityId "FABRIC_CAPACITY_ID"
 ```
@@ -214,7 +214,7 @@ Use the migration script to move workspaces from the source Premium capacity to 
 Run a dry run first to list impacted workspaces without making changes:
 
 ```powershell
-.\scripts\power-bi-premium-to-fabric-capacity-migration\Fabric-Capacity-Migration.ps1 `
+.\power-bi-premium-to-fabric-migration\scripts\Fabric-Capacity-Migration.ps1 `
     -SourceCapacityId "PREMIUM_CAPACITY_ID" `
     -TargetCapacityId "FABRIC_CAPACITY_ID" `
     -DryRun
@@ -225,7 +225,7 @@ Run a dry run first to list impacted workspaces without making changes:
 Use the rollback script to reverse the capacity assignment if validation, refresh behavior, or capacity performance checks fail:
 
 ```powershell
-.\scripts\power-bi-premium-to-fabric-capacity-migration\Rollback-Script.ps1
+.\power-bi-premium-to-fabric-migration\scripts\Rollback-Script.ps1
 ```
 
 ## Script Output
@@ -251,4 +251,4 @@ Scenarios that usually require extra discovery, custom engineering, or explicit 
 
 ## Sources
 
-For the official Microsoft documentation behind this guide, see [`docs/power-bi-premium-to-fabric-sources.md`](./power-bi-premium-to-fabric-sources.md).
+For the official Microsoft documentation behind this guide, see [`sources.md`](./sources.md).

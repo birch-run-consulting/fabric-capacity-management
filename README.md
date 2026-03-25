@@ -13,6 +13,8 @@ This repo now includes a public-facing migration guide for moving Power BI works
 - [`power-bi-premium-to-fabric-migration/sources.md`](power-bi-premium-to-fabric-migration/sources.md)
 - [`power-bi-premium-to-fabric-migration/scripts/`](power-bi-premium-to-fabric-migration/scripts/)
 
+For suspend/resume automation, see [`automation/logic-apps-managed-identity-suspend-resume.md`](automation/logic-apps-managed-identity-suspend-resume.md).
+
 ## Live Tool
 
 Open the Fabric Cost Analysis calculator:
